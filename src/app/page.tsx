@@ -1,10 +1,11 @@
 import DataTable from "@/components/DataTable/DataTable";
-import Image from "next/image";
+import DisplayLocations from "@/components/DisplayLocations/DisplayLocations"
 
 export default function Home() {
   return (
    <main>
     <DataTable/>
+    <DisplayLocations/>
    </main>
   );
 }
