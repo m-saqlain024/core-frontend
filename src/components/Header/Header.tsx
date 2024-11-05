@@ -9,7 +9,12 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 
-const navigation = [
+interface headerProps {
+  item: string;
+  href: string;
+}
+
+const navigation: headerProps[] = [
   {
     item: "Home",
     href: "/",
@@ -46,7 +51,7 @@ export default function Component() {
             <IoLogoVimeo className="h-6 w-6" />
             <span className="sr-only">ShadCN</span>
           </Link>
-          {navigation.map((item: any, index: number) => (
+          {navigation.map((item, index: number) => (
             <div className="grid gap-2 py-6" key={index}>
               <Link
                 className="flex w-full items-center py-2 text-lg font-semibold"
@@ -66,7 +71,7 @@ export default function Component() {
         <NavigationMenuList>
           <NavigationMenuLink asChild>
             <div>
-              {navigation.map((item: any, index: number) => (
+              {navigation.map((item, index: number) => (
                 <Link
                   key={index}
                   href={item.href}
