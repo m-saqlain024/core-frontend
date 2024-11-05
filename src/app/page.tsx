@@ -1,11 +1,13 @@
 import DataTable from "@/components/DataTable/DataTable";
-import DisplayLocations from "@/components/DisplayLocations/DisplayLocations"
+import Header from "@/components/Header/Header";
+import DisplayLocations from "@/components/DisplayLocations/DisplayLocations";
 
 export default function Home() {
   return (
-   <main>
-    {/* <DataTable/> */}
-    <DisplayLocations/>
-   </main>
+    <div className="">
+      <Header />
+      <DataTable />
+      {/* <DisplayLocations/> */}
+    </div>
   );
 }

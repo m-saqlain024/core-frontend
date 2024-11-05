@@ -10,7 +10,7 @@ import React from 'react';
 
 function makeClient(): ApolloClient<any> {
   const httpLink = new HttpLink({
-    uri: "https://flyby-router-demo.herokuapp.com/",
+    uri: "https://graphqlzero.almansi.me/api",
   });
 
   return new ApolloClient({

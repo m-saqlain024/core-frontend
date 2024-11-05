@@ -1,33 +1,53 @@
-"use client"
+import React from "react";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { gql, useQuery } from "@apollo/client";
-import { Skeleton } from "../ui/skeleton";
 
-const GET_LOCATIONS = gql`
-  query GetLocations {
-    locations {
-      id
-      name
-      description
-      photo
+const GET_POSTS = gql`
+  query GetPosts {
+    users {
+      data {
+        id
+        name
+        username
+      }
     }
   }
 `;
-function DisplayLocations() {
-  const { loading, error, data } = useQuery(GET_LOCATIONS);
 
-  if (loading) return <Skeleton/>;
-  if (error) return <p>Error : {error.message}</p>;
+function DataTable() {
+  const { loading, error, data } = useQuery(GET_POSTS);
 
-  return data.locations.map(({ id, name, description, photo }:any) => (
-    <div key={id}>
-      <h3>{name}</h3>
-      <img width="400" height="250" alt="location-reference" src={`${photo}`} />
-      <br />
-      <b>About this location:</b>
-      <p>{description}</p>
-      <br />
-    </div>
-  ));
+  console.log(data);
+  return (
+    <>
+      <Table> 
+        <TableHeader>
+          <TableRow>
+            <TableHead>id</TableHead>
+            <TableHead className="w-[100px]">name</TableHead>
+            <TableHead>user name </TableHead>
+          </TableRow>
+        </TableHeader>
+
+        {data.map((item: any, index: number) => (
+          <TableBody key={index}>
+            <TableRow>
+              <TableCell className="font-medium">{item.name}</TableCell>
+              <TableCell>{item.username}</TableCell>
+            </TableRow>
+          </TableBody>
+        ))}
+      </Table>
+    </>
+  );
 }
 
-export default DisplayLocations;
+export default DataTable;
