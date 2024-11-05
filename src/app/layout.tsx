@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./styles/globals.css";
 import { ApolloWrapper } from "@/lib/components/ApolloWrapper";
 import Header from "@/components/Header/Header";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSideBar } from "@/components/AppSideBar/AppSideBar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,13 +27,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <ApolloWrapper>
-          <Header />
-          <main>{children}</main>
+          <SidebarProvider>
+            {/* <Header /> */}
+            <AppSideBar />
+
+            <main>
+              <SidebarTrigger />
+              {children}
+            </main>
+          </SidebarProvider>
         </ApolloWrapper>
       </body>
     </html>

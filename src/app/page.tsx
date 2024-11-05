@@ -4,7 +4,7 @@ import DisplayLocations from "@/components/DisplayLocations/DisplayLocations"
 export default function Home() {
   return (
    <main>
-    <DataTable/>
+    {/* <DataTable/> */}
     <DisplayLocations/>
    </main>
   );
