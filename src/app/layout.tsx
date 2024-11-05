@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./styles/globals.css";
 import { ApolloWrapper } from "@/lib/components/ApolloWrapper";
-import Header from "@/components/Header/Header";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSideBar } from "@/components/AppSideBar/AppSideBar";
 
@@ -34,7 +33,6 @@ export default function RootLayout({
       >
         <ApolloWrapper>
           <SidebarProvider>
-            {/* <Header /> */}
             <AppSideBar />
 
             <main>
