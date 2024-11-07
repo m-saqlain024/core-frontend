@@ -1,4 +1,5 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+'use client'
+import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
 
 import {
   Sidebar,
@@ -9,7 +10,8 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
+import { useState } from "react";
 
 // Menu items.
 const items = [
@@ -38,9 +40,12 @@ const items = [
     url: "#",
     icon: Settings,
   },
-]
-
+];
 export function AppSideBar() {
+  const [isClient, setIsClient] = useState(false);
+  if (!isClient) {
+    return null;
+  }
   return (
     <Sidebar>
       <SidebarContent>
@@ -63,5 +68,5 @@ export function AppSideBar() {
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
-  )
+  );
 }
